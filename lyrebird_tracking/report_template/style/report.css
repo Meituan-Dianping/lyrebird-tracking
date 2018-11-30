@@ -1,0 +1,47 @@
+.ivu-table {
+    height: auto;
+}
+
+.i-table-caseName {
+    font-size: 8px;
+}
+
+.tag-caseName {
+    font-size: 3px;
+}
+
+.i-table-icon {
+    font-size: 16px;
+    text-align: center;
+}
+
+.myContentClass {
+    background: lightpink;
+}
+
+.infoContentClass {
+    background: lightblue;
+}
+
+.small {
+    margin-right: 10px;
+    font-size: 100%;
+}
+
+.content-header {
+    margin-bottom: 10px;
+}
+
+#channel {
+    margin-bottom: 10px;
+}
+
+#screenShot {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+}
+
+.picList {
+    padding: 10px;
+    float: left;
+}

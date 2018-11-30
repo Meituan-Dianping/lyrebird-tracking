@@ -1,0 +1,104 @@
+<meta charset="UTF-8">
+<link rel="stylesheet" href="http://unpkg.com/iview@3.1.5/dist/styles/iview.css">
+<script src="http://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style/report.css" type="text/css">
+<script src="http://unpkg.com/iview@3.1.5/dist/iview.min.js"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/element-ui/2.4.0/theme-chalk/index.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/element-ui/2.4.0/index.js"></script>
+<link href="http://unpkg.com/monaco-editor@0.15.6/min/vs/editor/editor.main.css" rel="stylesheet">
+
+
+
+<Row id="caseInfo" style="margin:15px">
+    <i-col span="12">
+        <filter-tag @filterchange="filterList"></filter-tag>
+        <br/>
+        <i-table highlight-row size="small" :columns="columns1" :data="displayedData" @on-row-click="handleRowSelect" style="margin:15px"></i-table>
+    </i-col>
+    <i-col span="12" v-if="currentData">
+        <tracking-detail :currentcontent="currentData" :codedetail="codedetail"></tracking-detail>
+        </div>
+    </i-col>
+</Row>
+
+<template id="filter-tag" style="margin:15px">
+    <div v-if="allGroup.length!=0" style="margin:15px">
+        <Tag v-for="item in grouplist" :key="item" :name="item" closable @on-close="handleClose">{{item}}</Tag>
+        <i-button icon="ios-create-outline" type="dashed" size="small" @click="showModal=true"> Edit Tag </i-button>
+        <modal v-model="showModal" title="Edit Tag" @on-ok="changeOk">
+            <i-select multiple filterable @on-change="activatedDataChange">
+                <option-group label="Group">
+                    <i-option v-for="item in allGroup" :key="item" :value="item">{{item}}</i-option>
+                </option-group>
+            </i-select>
+        </modal>
+    </div>    
+</template>
+
+<template id="tracking-detail-tpl">
+    <div class="box box-solid">
+        <div class="box-header">
+            <div class="pull-left">
+                <span style="font-size: 16px; font-weight: bold; color: rgb(70, 76, 91);">Detail</span>
+            </div> 
+        </div>
+        <div class="box-body">
+            <el-collapse v-model="activeNames">
+                <el-collapse-item v-for="item in currentcontent.asserts" :key="item.field">
+                    <template slot="title" v-if="item.flag===true">
+                        <i class="header-icon el-icon-circle-check-outline"></i>
+                        <span style="color:LimeGreen">Check field - {{item.field}} </span>
+                    </template>
+
+<template slot="title" v-else-if="item.flag===2||typeof(item.flag) == 'undefined'">
+                        <i class="header-icon el-icon-question"></i>
+                        <span style="color:CornflowerBlue">Check field - {{item.field}} </span>
+                    </template>
+<template slot="title" v-else>
+                        <i class="header-icon el-icon-circle-close-outline"></i>
+                        <span style="color:red">Check field - {{item.field}} </span>
+                    </template>
+<div>
+    <li>Field : {{item.field}}</li>
+    <li v-if="JSON.stringify(item.schema)=='{}'">Expect schema : No expected value
+    </li>
+    <li v-else>Expect schema :
+        <div v-html="jsoninfo(item.schema)"></div>
+    </li>
+    <li>Actual value :
+        <div v-if="item.actual" v-html="jsoninfo(item.actual)"></div>
+        <div v-else v-html="jsoninfo('N/A')"></div>
+    </li>
+</div>
+</el-collapse-item>
+<el-collapse-item name="1">
+    <template slot="title">
+                        <i class="el-icon-document"></i> Content
+                    </template>
+    <div id="container" style="height:500px;border:1px solid grey"></div>
+</el-collapse-item>
+</el-collapse>
+</div>
+</div>
+</template>
+
+<link href="http://cdn.bootcss.com/prism/1.14.0/themes/prism.min.css" rel="stylesheet">
+<script src="http://cdn.bootcss.com/prism/1.14.0/prism.min.js"></script>
+<script src="http://cdn.bootcss.com/prism/1.14.0/components/prism-json.min.js"></script>
+
+<script>
+    var require = {
+        paths: {
+            'vs': 'http://unpkg.com/monaco-editor@0.15.6/min/vs'
+        }
+    };
+</script>
+
+<script src="http://unpkg.com/monaco-editor@0.15.6/min/vs/loader.js"></script>
+<script src="http://unpkg.com/monaco-editor@0.15.6/min/vs/editor/editor.main.nls.js"></script>
+<script src="http://unpkg.com/monaco-editor@0.15.6/min/vs/editor/editor.main.js"></script>
+<script src="data/report-data.js"></script>
+<script src="components/filter-tag.js"></script>
+<script src="components/tracking-detail.js"></script>
+<script src="main.js"></script>

@@ -1,0 +1,100 @@
+{
+    "target": [
+        "abctest.com"
+    ],
+    "cases": [{
+        "name": "test case 1st",
+        "selector": "$[?key1='val1'].property1[?key2='val2']",
+        "asserts": [{
+                "field": "action",
+                "schema": {
+                    "type": "string",
+                    "pattern": "view"
+                }
+            },
+            {
+                "field": "page",
+                "schema": {
+                    "type": "string",
+                    "pattern": "detail_page"
+                }
+            },
+            {
+                "field": "lab",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "page_name": {
+                            "type": "string"
+                        },
+                        "good_id": {
+                            "type": "integer"
+                        },
+                        "index": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "page_name",
+                        "good_id",
+                        "index"
+                    ]
+                }
+            }
+        ],
+        "groupname": "group1",
+        "groupid": 1
+    }, {
+        "name": "test case 2nd",
+        "selector": "$[*].property2[?key3='val3']",
+        "asserts": [{
+                "field": "action",
+                "schema": {
+                    "type": "string",
+                    "pattern": "click"
+                }
+            },
+            {
+                "field": "page",
+                "schema": {
+                    "type": "string",
+                    "pattern": "home_page"
+                }
+            }, {
+                "field": "clickcount",
+                "schema": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                }
+            }, {
+                "field": "goodid_list",
+                "schema": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            }
+        ],
+        "groupname": "group2",
+        "groupid": 2
+    }, {
+        "name": "test case 3rd",
+        "selector": "$property3[2].property4[?key6='val7'].property5",
+        "asserts": [{
+            "field": "email",
+            "schema": {
+                "type": "string",
+                "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$",
+                "minLength": 2,
+                "maxLength": 3,
+                "format": "date-time|email|hostname|ipv4|ipv6|uri"
+            }
+        }],
+        "groupname": "group3",
+        "groupid": 3
+    }]
+}

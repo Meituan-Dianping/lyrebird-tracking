@@ -1,0 +1,26 @@
+<div id="app">
+    <tracking></tracking>
+</div>
+
+<link href="https://cdn.bootcss.com/prism/1.14.0/themes/prism.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcss.com/prism/1.14.0/prism.min.js"></script>
+<script src="https://cdn.bootcss.com/prism/1.14.0/components/prism-json.min.js"></script>
+
+<!-- 引入element样式 -->
+<link href="https://cdn.bootcss.com/element-ui/2.4.0/theme-chalk/index.css" rel="stylesheet">
+<!-- 引入element组件库 -->
+<script src="https://cdn.bootcss.com/element-ui/2.4.0/index.js"></script>
+
+<script>
+    var require = {
+        paths: {
+            'vs': '/static/plugins/monaco-editor/min/vs'
+        }
+    };
+</script>
+<script src="/static/plugins/monaco-editor/min/vs/loader.js"></script>
+<script src="/static/plugins/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
+<script src="/static/plugins/monaco-editor/min/vs/editor/editor.main.js"></script>
+
+<script src="/ui/plugin/tracking/static/js/main.js"></script>
