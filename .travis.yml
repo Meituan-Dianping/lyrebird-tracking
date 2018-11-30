@@ -1,0 +1,29 @@
+jobs:
+  include:
+    - stage: unit test
+      language: python
+      catch: pip
+      python:
+        - "3.6"
+      # command to install dependencies
+      install:
+        - pip install -r requirements.txt
+        - pip install .
+      # command to run tests
+      script: pytest
+             
+    - stage: release to pypi
+      if: type = push
+      language: python
+      catch: pip
+      python:
+        - "3.6"
+      script:
+        - echo "Skipping tests"
+      deploy:
+        provider: pypi
+        user: Addison_Gao
+        password:
+          secure: "suP+qzw+Z5LW6cgUyeg0+CWnLpPSaedI9C6/kUyz94M7bZOzutmlD+WmwBnMQN2Z7vgxAyZZtuBnK/jBihpVlAFZUHidpfaS+NmX6oyWb9V04SX1TjkxWdhbG8JVwvLkcpxXb+vwE/UmcIunz53sEUZwT4aUgn+zPlI8E+Z0RwedL7yBTmw6Cng0L4buxrpkAuraVl62ewry2ikIeVQbfeMGIKUbG4PDuGuxyOjbvM2KjjvsCqdEu/Zma+p4L8mmSKsyN1cygF1UJa2pvYxARtsw/SKNdKoCLRgetPy15/obqErFFD7p7FFHSkdoDTie0c0VX/75AQ0gvOFqJ6ysiFjanJeT0qt7cZOLq2TPHbtmN8ZHPfVpZTkb4rFJ+748P6H9cyhSSSK9iOLYZAjz2gkHUItsA5xkHYKbf14Gd3nGeSY0Or02RNoAttqPpn03qbW7KtSVhSDHFcktZO7OKfvJfei+ku9A92vZDFrkM9SCbpZEMdAeDjHGeZa6dXAci1BWvinHoU1JXbvKSIDy+TYGxlsJJM9yYWGuleqFe/jro6FxUOVlAOldhlx+ge+sZE3YA2zYru5riI5G6cilWqVU9F12oK1wVSLaqSqXqOCh+E0sUDCikF7MVYTnwTXuR5RgNwjbNo+AhyYAem3ILjuBUNY8Dm1gRSqlA9SWevo="
+        on:
+          tags: true
