@@ -48,8 +48,8 @@ def validate(rule, targets_list):
         # emit socket io to FE
         context.application.socket_io.emit('update', namespace='/tracking-plugin')
         if item.get('result') == 'fail':
-            error_message = dict((k, item[k]) for k in (
-                'name', 'result', 'selector', 'asserts', 'content') if k in item)
+            error_message = dict((k, item[k]) for k in ('name', 'content') if k in item)
+            error_message['error_msg'] = filter_error_msg(item)
             # 有埋点错误消息，发事件给消息总线
             pubilsh_error_msg(error_message)
 
@@ -66,3 +66,34 @@ def pubilsh_error_msg(msg):
     lyrebird.publish('tracking.error', msg, state=True)
     lyrebird.publish('tracking.error_list', app_context.error_list)
     lyrebird.publish('tracking.error_list', app_context.error_list, state=True)
+
+
+def filter_error_msg(result_dict):
+    """
+    从测试结果中筛选出错误信息，转化为字符串
+    :param result_dict: dict类型，待处理的结果信息
+    :return error_str: str类型，最终的错误信息字符串
+
+    """
+    # 筛选错误信息
+    error_msg = dict((k, result_dict[k]) for k in ('groupname', 'name') if k in result_dict)
+    error_list = []
+    for item in result_dict.get('asserts'):
+        if item.get('flag') is False:
+            error_detail = {'field': item.get('field'), 'error detail': item.get('hint')}
+            error_list.append(error_detail)
+    error_msg['error message'] = error_list
+
+    # 转换为字符串
+    error_str = ''
+    for key in error_msg.keys():
+        if key == 'error message':
+            temp_str = key + ':\n'
+            for item in error_msg.get(key):
+                temp_str = temp_str + 'field: ' + item.get('field') + '\n' \
+                           + 'error detail: ' + item.get('error detail') + '\n'
+        else:
+            temp_str = key + ': ' + str(error_msg.get(key)) + '\n'
+        error_str = error_str + temp_str
+
+    return error_str
