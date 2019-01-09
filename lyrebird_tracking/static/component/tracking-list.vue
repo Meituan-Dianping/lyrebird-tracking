@@ -1,13 +1,13 @@
 <template>
-    <card>
+    <Card>
        <div class="tracking-list">
             <filter-tag @filterchange="filterList"></filter-tag>
             <br/>
-            <div style="max-height: 550px; overflow-y: auto;">
-              <i-table highlight-row  :columns="columns" :data="displayedData" @on-row-click="handleRowSelect"></i-table>
-            </div>
+            <!-- <div style="max-height: 550px; overflow-y: auto;"> -->
+              <i-table highlight-row  :columns="columns" :data="displayedData" @on-row-click="handleRowSelect" class="data-table"></i-table>
+            <!-- </div> -->
         </div>
-    </card>
+    </Card>
 </template>
 
 <script>
@@ -137,4 +137,17 @@ module.exports = {
 </script>
 
 <style>
+.data-table th div{
+padding-left: 5px;
+padding-right: 5px;
+}
+.data-table td div{
+padding-left: 5px;
+padding-right: 5px;
+}
+.tracking-list {
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
 </style>

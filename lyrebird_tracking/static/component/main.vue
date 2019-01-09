@@ -1,14 +1,16 @@
 <template>
     <div>
-        <banner></banner>
-        <div class="row">
-            <div class="col-md-6">
-                <tracking-list :trackingdata="allTrackingData"  @detail="getTrackingIndex" @content="getCurrentContent"></tracking-list>
-            </div>
-            <div class="col-md-6" v-if="currentTracking">
-                <tracking-detail :trackingdetail="currentTracking" :trackingindex="currentIndex" :currentcontent="currentContent" :codedetail="codedetail"></tracking-detail>
-            </div>
-        </div>
+        <Row class="button-bar">
+          <banner></banner>
+        </Row>
+        <Row>
+            <i-col span="12">
+                <tracking-list :trackingdata="allTrackingData"  @detail="getTrackingIndex" @content="getCurrentContent" class="tracking-left"></tracking-list>
+            </i-col>
+            <i-col span="12" v-if="currentTracking">
+                <tracking-detail :trackingdetail="currentTracking" :trackingindex="currentIndex" :currentcontent="currentContent" :codedetail="codedetail" class="tracking-right"></tracking-detail>
+            </i-col>
+        </Row>
     </div>
 </template>
 
@@ -75,5 +77,17 @@ module.exports = {
 };
 </script>
 
-<style>
+<style scoped>
+  .button-bar {
+      margin-bottom: 5px;
+      height: 48px;
+    }
+
+  .tracking-left {
+    margin-right: 5px;
+  }
+
+  .tracking-right {
+    margin-left: 5px;
+  }
 </style>

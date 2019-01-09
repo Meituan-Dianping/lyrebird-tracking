@@ -1,61 +1,49 @@
 <template>
-    <div class="box box-solid">
-        <div class="box-header">
-            <div class="pull-left">
-                <!-- <span class="badge bg-yellow">Index: {{trackingdetail.index}}</span> -->
-                <!-- <a class="btn btn-warning btn-flat btn-xs"><b>Index: {{trackingindex}}</b></a> -->
-                <font style="font-size: 16px; font-weight: bold; color: rgb(70, 76, 91);">Detail</font>
-            </div> 
-        </div>
-        <div class="box-body">
-            <el-collapse v-model="activeNames">
-                <el-collapse-item v-for="item in currentcontent.asserts" :key="item.field">
-                    <template slot="title" v-if="item.flag===true">
-                      <i class="header-icon el-icon-circle-check-outline"></i>
-                      <font color="LimeGreen">Check field - {{item.field}} </font>
-                    </template>
-                    <!-- 没有预期值或未测试的埋点信息，展示问号样式 -->
-                    <template slot="title" v-else-if="item.flag===2||typeof(item.flag) == 'undefined'">
-                      <i class="header-icon el-icon-question"></i>
-                      <font color="CornflowerBlue">Check field - {{item.field}} </font>
-                    </template>
-                    <template slot="title" v-else>
-                      <i class="header-icon el-icon-circle-close-outline"></i>
-                      <font color="red">Check field - {{item.field}} </font>
-                    </template>
-                    <div>
-                        <!-- 没有期望值-展示文案提示 -->
-                        <li>Field : {{item.field}}</li>
-                        <li v-if="JSON.stringify(item.schema)=='{}'">Expect schema : 
-                          No expected value
-                        </li>
-                        <!-- 未测试过场景-展示NA -->
-                        <!-- <li v-else-if="item.schema">Expect schema : 
-                          <div v-html="jsoninfo(item.schema)"></div>
-                        </li> -->
-                        <!-- 测试过场景-取expect参数 -->
-                        <li v-else>Expect schema :
-                          <div v-html="jsoninfo(item.schema)"></div>
-                        </li>
-                        <li>Actual value : 
-                          <div v-if="item.actual" v-html="jsoninfo(item.actual)"></div>
-                          <!-- 未测试过场景-实际值不存在展示NA -->
-                          <div v-else v-html="jsoninfo('N/A')"></div>
-                        </li>
-                    </div>
-                </el-collapse-item>
-                <el-collapse-item name="1">
-                    <template slot="title">
-                      <i class="el-icon-document"></i> Content
-                    </template>
-                    <!-- <div class="box-body">
-                        <div v-html="infoContaint"></div>
-                    </div> -->
-                    <div id="container" style="height:500px;border:1px solid grey"></div>
-                </el-collapse-item>
-            </el-collapse>
-        </div>
-    </div>
+     <Card>
+       <div class="tracking-detail">
+          <font style="font-size: 16px; font-weight: bold; color: rgb(70, 76, 91);">Detail</font>
+          <br/>
+          <br/>
+          <el-collapse v-model="activeNames">
+              <el-collapse-item v-for="item in currentcontent.asserts" :key="item.field">
+                  <template slot="title" v-if="item.flag===true">
+                    <i class="header-icon el-icon-circle-check-outline"></i>
+                    <font color="LimeGreen">Check field - {{item.field}} </font>
+                  </template>
+                  <!-- 没有预期值或未测试的埋点信息，展示问号样式 -->
+                  <template slot="title" v-else-if="item.flag===2||typeof(item.flag) == 'undefined'">
+                    <i class="header-icon el-icon-question"></i>
+                    <font color="CornflowerBlue">Check field - {{item.field}} </font>
+                  </template>
+                  <template slot="title" v-else>
+                    <i class="header-icon el-icon-circle-close-outline"></i>
+                    <font color="red">Check field - {{item.field}} </font>
+                  </template>
+                  <div>
+                      <!-- 没有期望值-展示文案提示 -->
+                      <li>Field : {{item.field}}</li>
+                      <li v-if="JSON.stringify(item.schema)=='{}'">Expect schema : 
+                        No expected value
+                      </li>
+                      <!-- 未测试过场景-展示NA -->
+                      <!-- <li v-else-if="item.schema">Expect schema : 
+                        <div v-html="jsoninfo(item.schema)"></div>
+                      </li> -->
+                      <!-- 测试过场景-取expect参数 -->
+                      <li v-else>Expect schema :
+                        <div v-html="jsoninfo(item.schema)"></div>
+                      </li>
+                      <li>Actual value : 
+                        <div v-if="item.actual" v-html="jsoninfo(item.actual)"></div>
+                        <!-- 未测试过场景-实际值不存在展示NA -->
+                        <div v-else v-html="jsoninfo('N/A')"></div>
+                      </li>
+                  </div>
+              </el-collapse-item>
+          </el-collapse>
+          <div id="container" style="height:500px;border:1px solid grey"></div>
+       </div>
+    </Card>
 </template>
 
 <script>
@@ -200,5 +188,9 @@ module.exports = {
 }
 .infoContentClass {
 	background: lightblue;
+}
+.tracking-detail {
+  height: calc(100vh - 80px);
+  overflow-y: auto;
 }
 </style>

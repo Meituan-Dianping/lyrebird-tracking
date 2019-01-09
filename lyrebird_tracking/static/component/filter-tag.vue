@@ -60,7 +60,7 @@ module.exports = {
       this.grouplist = this.changeGroupCache;
       this.$emit("filterchange", this.grouplist);
       this.$Notice.success({
-        title: "Change Filter Success :-D "
+        title: "Change Filter Success"
       });
     },
     activatedDataChange: function(val) {
