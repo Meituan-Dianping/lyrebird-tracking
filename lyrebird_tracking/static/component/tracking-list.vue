@@ -119,17 +119,15 @@ module.exports = {
     displayedData: function() {
       // filter出name
       let showdata = [];
-      if (this.filter_rules.length == 0) {
-        showdata = this.trackingdata;
-      } else {
-        for (let i = 0; i < this.filter_rules.length; i++) {
-          let filter_rule = this.filter_rules[i];
-          let filtercells = this.trackingdata.filter(function(elem) {
-            return elem.groupname == filter_rule;
-          });
-          showdata = showdata.concat(filtercells);
-        }
+      
+      for (let i = 0; i < this.filter_rules.length; i++) {
+        let filter_rule = this.filter_rules[i];
+        let filtercells = this.trackingdata.filter(function(elem) {
+          return elem.groupname == filter_rule;
+        });
+        showdata = showdata.concat(filtercells);
       }
+      
       return showdata;
     }
   }

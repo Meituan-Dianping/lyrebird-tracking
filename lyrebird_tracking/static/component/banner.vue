@@ -8,9 +8,6 @@
 <script>
 module.exports = {
     mounted: function() {
-        this.$Notice.config({
-            top: 75
-        });
     },
     data: function() {
         return {

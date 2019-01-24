@@ -12,6 +12,8 @@ class Context:
         self.content = []
         # error messages list
         self.error_list = []
+        # selected group list
+        self.select_groups = []
 
 
 # 单例模式

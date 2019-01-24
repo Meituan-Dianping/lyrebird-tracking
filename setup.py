@@ -8,7 +8,7 @@ with open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='lyrebird-tracking',
-    version='0.10.2',
+    version='0.11.0',
     packages=['lyrebird_tracking'],
     url='https://github.com/meituan/lyrebird-tracking',
     author='HBQA',

@@ -77,6 +77,21 @@ class Tracking(lyrebird.PluginView):
         """
         return jsonify(app_context.config)
 
+    def groups(self):
+        """
+        获取选中的case分组；初始返回所有分组
+        """
+        return jsonify(app_context.select_groups)
+    
+    def select(self):
+        """
+        更新选中的case分组
+        """
+        grouplist = request.json.get('group')
+        app_context.select_groups = grouplist
+        return context.make_ok_response()
+
+
     def on_create(self):
         """
         插件初始化函数
@@ -91,6 +106,9 @@ class Tracking(lyrebird.PluginView):
         self.add_url_rule('/report', view_func=self.save_report)
         self.add_url_rule('/clear', view_func=self.clear_result)
         self.add_url_rule('/base', view_func=self.get_base_info)
+        self.add_url_rule('/group', view_func=self.groups)
+        self.add_url_rule('/select', view_func=self.select, methods=['POST'])
+
 
     def get_icon(self):
         """
