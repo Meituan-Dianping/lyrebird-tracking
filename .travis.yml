@@ -13,7 +13,7 @@ jobs:
       script: pytest
              
     - stage: release to pypi
-      if: type = push
+      if: type = push AND tag IS present
       language: python
       catch: pip
       python:
@@ -24,6 +24,6 @@ jobs:
         provider: pypi
         user: Addison_Gao
         password:
-          secure: "suP+qzw+Z5LW6cgUyeg0+CWnLpPSaedI9C6/kUyz94M7bZOzutmlD+WmwBnMQN2Z7vgxAyZZtuBnK/jBihpVlAFZUHidpfaS+NmX6oyWb9V04SX1TjkxWdhbG8JVwvLkcpxXb+vwE/UmcIunz53sEUZwT4aUgn+zPlI8E+Z0RwedL7yBTmw6Cng0L4buxrpkAuraVl62ewry2ikIeVQbfeMGIKUbG4PDuGuxyOjbvM2KjjvsCqdEu/Zma+p4L8mmSKsyN1cygF1UJa2pvYxARtsw/SKNdKoCLRgetPy15/obqErFFD7p7FFHSkdoDTie0c0VX/75AQ0gvOFqJ6ysiFjanJeT0qt7cZOLq2TPHbtmN8ZHPfVpZTkb4rFJ+748P6H9cyhSSSK9iOLYZAjz2gkHUItsA5xkHYKbf14Gd3nGeSY0Or02RNoAttqPpn03qbW7KtSVhSDHFcktZO7OKfvJfei+ku9A92vZDFrkM9SCbpZEMdAeDjHGeZa6dXAci1BWvinHoU1JXbvKSIDy+TYGxlsJJM9yYWGuleqFe/jro6FxUOVlAOldhlx+ge+sZE3YA2zYru5riI5G6cilWqVU9F12oK1wVSLaqSqXqOCh+E0sUDCikF7MVYTnwTXuR5RgNwjbNo+AhyYAem3ILjuBUNY8Dm1gRSqlA9SWevo="
+          secure: "zTXn5Df2mzZ5s4JVvbRgCsADApu3R3cOtyuQf1vMZMmFQh+CID+ta0xhUWV5SdnSwPIV82xbZ5EEDOKFNrKokOSe3rXX6596faOHVU86A/uMZXburWC6hjMVcW4soaDIj/ObQ8yX0gJ91IWTakj2y1Bx4pFS/cyLpot/pgUF1eLljjF0GiAtIBdDrLypYt2B6fhubVprmvU5xSsRoa2NorHk0XO0EWEMCt4TsMTc5N8AaOP3lBclQe3xypVG48za513oq+/Ju9bxZsMPC5oPGwqRN0tkC0WzkiregchuCSvARozPOpKaYNY28A7p8CvdHKt6Dxk22+izTgZw5s/WWt+AWL+Qs/wX5FKtFa/T9iL7/DrZfZwbqvQ/+emgBeWmaHaa1QoVNC7Rt20sAkZI3Qab5stYPMrs0JhjvrY83rbD8KU0o80StO0u2KR8ZC2lWF3PJhC4yoV9820BpFKGR7zAJIcxrckjatMlRmGSCBvGlVVMrWKxPngQsZAyrBJlJbtHc9kiwXbQkXHhStj1eEpVCfYYYmArqAzVAqB2ncvlwDDYiw9JxZ2fsGa6O+qTdkQNfHB60T1YqESRBIbZED1PKwiZT5ijxjdqMIdn3g2t6GAZwvhLs6dJZHslyOMBny/e8IdzpMcFv5YK47eXG7eLsGvETyRBeenyPSMZzOE="
         on:
           tags: true
