@@ -50,8 +50,9 @@ def validate(rule, targets_list):
         if item.get('result') == 'fail':
             error_message = dict((k, item[k]) for k in ('name', 'content') if k in item)
             error_message['error_msg'] = filter_error_msg(item)
+            # Bug
             # 有埋点错误消息，发事件给消息总线
-            pubilsh_error_msg(error_message)
+            # pubilsh_error_msg(error_message)
 
 
 def pubilsh_error_msg(msg):
