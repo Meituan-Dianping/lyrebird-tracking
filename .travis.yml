@@ -22,8 +22,8 @@ jobs:
         - echo "Skipping tests"
       deploy:
         provider: pypi
-        user: Addison_Gao
+        user: meituanqa
         password:
-          secure: "zTXn5Df2mzZ5s4JVvbRgCsADApu3R3cOtyuQf1vMZMmFQh+CID+ta0xhUWV5SdnSwPIV82xbZ5EEDOKFNrKokOSe3rXX6596faOHVU86A/uMZXburWC6hjMVcW4soaDIj/ObQ8yX0gJ91IWTakj2y1Bx4pFS/cyLpot/pgUF1eLljjF0GiAtIBdDrLypYt2B6fhubVprmvU5xSsRoa2NorHk0XO0EWEMCt4TsMTc5N8AaOP3lBclQe3xypVG48za513oq+/Ju9bxZsMPC5oPGwqRN0tkC0WzkiregchuCSvARozPOpKaYNY28A7p8CvdHKt6Dxk22+izTgZw5s/WWt+AWL+Qs/wX5FKtFa/T9iL7/DrZfZwbqvQ/+emgBeWmaHaa1QoVNC7Rt20sAkZI3Qab5stYPMrs0JhjvrY83rbD8KU0o80StO0u2KR8ZC2lWF3PJhC4yoV9820BpFKGR7zAJIcxrckjatMlRmGSCBvGlVVMrWKxPngQsZAyrBJlJbtHc9kiwXbQkXHhStj1eEpVCfYYYmArqAzVAqB2ncvlwDDYiw9JxZ2fsGa6O+qTdkQNfHB60T1YqESRBIbZED1PKwiZT5ijxjdqMIdn3g2t6GAZwvhLs6dJZHslyOMBny/e8IdzpMcFv5YK47eXG7eLsGvETyRBeenyPSMZzOE="
+          secure: "B8ua64zQJyydVVVWIMG3lCn3yjca4ZFtxYiThQXKIAh/dkDr40B6Em7zCgjb5n1d6A2MhkQKwBcAaEbhX7W2zEjQv6PAeV42QOYgB/W9pdBGbUh31ZXQSwE0mpQdAH0WCCdLOpB0F0e95JDDtVhjQlhAYbrVSpqYAhIeq79rBtJNvxRRrHjdzHYW+qbwFjbWxlO3c06TEpU2dTwHPdBx9iup4utmEmA51HIQkItDzNdHcRCPLyZvr+P27xp9ikrYgg2He/Usyq/zC6V7NhtMaPga8sf4jMPoYEvW6V/fFyRssvlytpdTAeSyZRAyHRl6cw6fyehqfbiTdhFNzUMRWkg/Oijd0+S4EbpmY5DX4+mVDuM0EU6eizchvT9sjwZcSrlEBK74oyWtQOfLy0yl5+T/Eny3pqLaF1wBGARyMw3Nkviijc1llh/wHgsT7eYUDAoTm7XdEPmtv22FVL7OXCrUbuPRdkyzy0x8WSit9gJfj4IJ0L5kdiNoSBtGw1XASgIyJJUwc3ke+sGp4WmrveYK+Lrp/DCgMH/VtSdSvWkuKAJ1c9Eck8NhD2ZJvgQaKGPgmE3Q+3fMbZcI2U3gJeqkGXgNhSGGDau5694vTFdbs3bbX/dS72ahcCu9hkTPEV+oFWXDmXD6I/q8/hEJ2OhxOmdS7EeV36b47h8pWLA="
         on:
           tags: true
